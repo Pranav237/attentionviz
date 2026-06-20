@@ -33,15 +33,31 @@ def show_attention(text, query_word, layer, head):
     words = [tokenizer.decode(t) for t in tokens]
     
     word = " " + query_word
-    
     pos = words.index(word)
-    
     row = grid[pos]
     
+    words = format_string(words)
+    
     for i in range(len(row)):
-        print(words[i], row[i].item())
+        curr_bar = build_bar(row[i].item())
+        print(words[i], curr_bar, row[i].item())
     
-    
-    
+def build_bar(filled):
+    filled = filled * 10
+    filled = round(filled)
+    bar = ""
+    for _ in range(10):
+        if filled > 0:
+            bar = bar + "█"
+            filled = filled - 1
+        else:
+            bar = bar + "░"
+    return bar
+
+def format_string(words):
+    new_words = [""] * len(words)
+    for i in range(len(words)):
+        new_words[i] = words[i].ljust(10)
+    return new_words
 
 show_attention("The cat sat on the", "on", 5, 10)
