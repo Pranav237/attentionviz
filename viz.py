@@ -40,7 +40,7 @@ def show_attention(text, query_word, layer, head):
     
     for i in range(len(row)):
         curr_bar = build_bar(row[i].item())
-        print(words[i], curr_bar, row[i].item())
+        print(words[i], curr_bar, f"{row[i].item() * 100:.1f}%")
     
 def build_bar(filled):
     filled = filled * 10
@@ -57,7 +57,8 @@ def build_bar(filled):
 def format_string(words):
     new_words = [""] * len(words)
     for i in range(len(words)):
-        new_words[i] = words[i].ljust(10)
+        temp = words[i].strip()
+        new_words[i] = temp.ljust(10)
     return new_words
 
 show_attention("The cat sat on the", "on", 5, 10)
