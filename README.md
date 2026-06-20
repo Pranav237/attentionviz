@@ -14,3 +14,5 @@ Built to understand how transformer attention actually works, from the inside.
   word's attention went
 
 ## Example
+![Attention visualizer example 1 ](omniman.png)
+![Attention visualizer example 2](twd.png)
