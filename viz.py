@@ -26,9 +26,9 @@ def get_attention(text):
     outputs = model(input_ids, output_attentions=True)
     return outputs.attentions
 
-def show_attention(text, query_word):
+def show_attention(text, query_word, layer, head):
     attentions = get_attention(text)
-    grid = attentions[5][0, 5] 
+    grid = attentions[layer][0, head] 
     tokens = tokenizer.encode(text)
     words = [tokenizer.decode(t) for t in tokens]
     
@@ -44,4 +44,4 @@ def show_attention(text, query_word):
     
     
 
-show_attention("The cat sat on the ", "sat")
+show_attention("The cat sat on the", "on", 5, 10)
