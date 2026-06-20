@@ -61,4 +61,4 @@ def format_string(words):
         new_words[i] = temp.ljust(10)
     return new_words
 
-show_attention("The cat sat on the", "on", 5, 10)
+show_attention("we are the walking dead", "dead", 1, 5)
